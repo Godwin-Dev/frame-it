@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, {useEffect } from "react";
 import Photowall from "./PhotoFrame";
 import AddPhoto from "./AddPhoto";
 import { Route } from "react-router-dom";
@@ -16,32 +16,34 @@ const App = () => {
   }, [dispatch]);
 
   return (
-    <Fragment>
-      <div className="header">
+    <div className='wrapper-container'>
+      <header className="header">
         <h1>
           <Link to="/">FrameIt</Link>
         </h1>
         <p className="slogan">Add it to frame it </p>
-      </div>
-      <Route
-        exact
-        path="/"
-        render={() => (
-          <div>
-            <Photowall />
-          </div>
-        )}
-      />
+      </header>
+      <main>
+        <Route
+          exact
+          path="/"
+          render={() => (
+            <div>
+              <Photowall />
+            </div>
+          )}
+        />
 
-      <Route
-        path="/addphoto"
-        render={({ history }) => <AddPhoto onHistory={history} />}
-      />
+        <Route
+          path="/addphoto"
+          render={({ history }) => <AddPhoto onHistory={history} />}
+        />
 
-      <Route path="/single/:id" render={(params) => <Single {...params} />} />
+        <Route path="/single/:id" render={(params) => <Single {...params} />} />
+      </main>
 
       <footer className="footer">&copy; GodwinGaitan</footer>
-    </Fragment>
+    </div>
   );
 };
 

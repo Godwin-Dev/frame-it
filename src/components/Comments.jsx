@@ -8,6 +8,9 @@ const Comments = (props) => {
   function handleSubmit(event) {
     event.preventDefault();
     const comment = event.target.elements.comment.value;
+    if (comment.length === 0) {
+      return;
+    }
     dispatch(startAddingComment(comment,props.id));
     event.target.elements.comment.value = "";
   }
